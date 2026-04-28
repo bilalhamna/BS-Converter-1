@@ -477,7 +477,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 // BANKS & COLUMNS
 // ═══════════════════════════════════════════
 const BANKS={HBL:{name:"Habib Bank Limited",color:"#006747",sigs:["habib bank","habibbank","hbl statement","hbl account"]},UBL:{name:"United Bank Limited",color:"#1B3A5C",sigs:["united bank","ubl statement","ubl account","ubl limited"]},MCB:{name:"MCB Bank",color:"#800020",sigs:["mcb bank","mcb statement","muslim commercial","mcb limited"]},ABL:{name:"Allied Bank Limited",color:"#003366",sigs:["allied bank","abl statement","abl account","abl limited"]},MEEZAN:{name:"Meezan Bank",color:"#00703C",sigs:["meezan bank","meezan statement","mebl","meezan limited"]},BAFL:{name:"Bank Alfalah",color:"#C8102E",sigs:["bank alfalah","alfalah statement","bafl","alfalah limited"]},FAYSAL:{name:"Faysal Bank",color:"#003D6B",sigs:["faysal bank","faysal statement","fbl","faysal limited"]},JSBL:{name:"JS Bank",color:"#ED1C24",sigs:["js bank","jsbl","js statement","js limited"]},ASKARI:{name:"Askari Bank",color:"#1C4587",sigs:["askari bank","askari statement","akbl","askari limited"]},SCB:{name:"Standard Chartered",color:"#0072AA",sigs:["standard chartered","scb statement","scb account","scb pakistan"]},CITI:{name:"Citibank",color:"#003B70",sigs:["citibank","citi bank","citi statement","citi pakistan"]}};
-const BASE_COLS=[{key:"sr_no",label:"Sr. No.",dflt:true},{key:"trans_date",label:"Transaction Date",dflt:true},{key:"value_date",label:"Value Date",dflt:true},{key:"description",label:"Description / Narration",dflt:true},{key:"reference",label:"Reference / Cheque No",dflt:true},{key:"debit",label:"Debit (PKR)",dflt:true},{key:"credit",label:"Credit (PKR)",dflt:true},{key:"balance",label:"Running Balance (PKR)",dflt:true},{key:"bank_name",label:"Bank Name",dflt:false},{key:"account_no",label:"Account Number",dflt:false},{key:"currency",label:"Currency",dflt:false},{key:"dr_cr_indicator",label:"Dr/Cr Indicator",dflt:false},{key:"net_amount",label:"Net Amount",dflt:false}];
+const BASE_COLS=[{key:"sr_no",label:"Sr. No.",dflt:true},{key:"trans_date",label:"Transaction Date",dflt:true},{key:"value_date",label:"Value Date",dflt:true},{key:"description",label:"Description / Narration",dflt:true},{key:"reference",label:"Reference / Cheque No",dflt:true},{key:"debit",label:"Debit (PKR)",dflt:true},{key:"credit",label:"Credit (PKR)",dflt:true},{key:"balance",label:"Running Balance (PKR)",dflt:true},{key:"bank_name",label:"Bank Name",dflt:false},{key:"account_no",label:"Account Number",dflt:false},{key:"currency",label:"Currency",dflt:false},{key:"dr_cr_indicator",label:"Dr/Cr Indicator",dflt:false},{key:"dc_type",label:"DC Type",dflt:true},{key:"net_amount",label:"Net Amount",dflt:false}];
 
 // ═══════════════════════════════════════════
 // STATE
@@ -866,6 +866,7 @@ function processFile(data,fn){
       account_no: "",
       currency: "PKR",
       dr_cr_indicator: dr && dr > 0 ? "Dr" : cr && cr > 0 ? "Cr" : "",
+      dc_type: dr && dr > 0 ? "DBIT" : cr && cr > 0 ? "CRDT" : "",
       net_amount: (cr || 0) - (dr || 0),
     };
 
